@@ -13,6 +13,9 @@
 		79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79670A171E1C291500B7DC96 /* dineroFrontend.xcdatamodeld */; };
 		79670A1B1E1C291500B7DC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79670A1A1E1C291500B7DC96 /* Assets.xcassets */; };
 		79670A1E1E1C291500B7DC96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79670A1C1E1C291500B7DC96 /* LaunchScreen.storyboard */; };
+		79670A271E1C2C8700B7DC96 /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */; };
+		79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A281E1C2CD200B7DC96 /* LoginViewController.swift */; };
+		79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		79670A1A1E1C291500B7DC96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79670A1D1E1C291500B7DC96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79670A1F1E1C291500B7DC96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
+		79670A281E1C2CD200B7DC96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		79670A0F1E1C291500B7DC96 /* dineroFrontend */ = {
 			isa = PBXGroup;
 			children = (
+				79670A251E1C2C0100B7DC96 /* auth */,
 				79670A101E1C291500B7DC96 /* AppDelegate.swift */,
 				79670A121E1C291500B7DC96 /* ViewController.swift */,
 				79670A141E1C291500B7DC96 /* Main.storyboard */,
@@ -65,6 +72,16 @@
 				79670A171E1C291500B7DC96 /* dineroFrontend.xcdatamodeld */,
 			);
 			path = dineroFrontend;
+			sourceTree = "<group>";
+		};
+		79670A251E1C2C0100B7DC96 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */,
+				79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */,
+				79670A281E1C2CD200B7DC96 /* LoginViewController.swift */,
+			);
+			name = auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79670A1E1E1C291500B7DC96 /* LaunchScreen.storyboard in Resources */,
+				79670A271E1C2C8700B7DC96 /* LoginRegister.storyboard in Resources */,
 				79670A1B1E1C291500B7DC96 /* Assets.xcassets in Resources */,
 				79670A161E1C291500B7DC96 /* Main.storyboard in Resources */,
 			);
@@ -139,6 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */,
+				79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */,
 				79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */,
 				79670A131E1C291500B7DC96 /* ViewController.swift in Sources */,
 				79670A111E1C291500B7DC96 /* AppDelegate.swift in Sources */,
