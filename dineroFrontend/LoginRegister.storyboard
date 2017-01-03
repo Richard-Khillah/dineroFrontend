@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LoginVC-->
+        <!--LoginView-->
         <scene sceneID="RXs-BP-nPW">
             <objects>
-                <viewController title="LoginVC" id="9hv-cb-ZHN" sceneMemberID="viewController">
+                <viewController title="LoginView" id="9hv-cb-ZHN" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QAV-XZ-5Dx"/>
                         <viewControllerLayoutGuide type="bottom" id="DIk-vJ-Qva"/>
@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="205.59999999999999" y="-9.4452773613193415"/>
         </scene>
-        <!--RegisterVC-->
+        <!--RegisterView-->
         <scene sceneID="iSh-j2-VsW">
             <objects>
-                <viewController title="RegisterVC" id="m6Y-HJ-Oh4" sceneMemberID="viewController">
+                <viewController title="RegisterView" id="m6Y-HJ-Oh4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SXo-w1-KWY"/>
                         <viewControllerLayoutGuide type="bottom" id="bB5-Mx-lMd"/>
@@ -296,7 +296,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOs-wV-cer" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="-9.4452773613193415"/>
+            <point key="canvasLocation" x="991" y="-9"/>
+        </scene>
+        <!--RolePopupView-->
+        <scene sceneID="SW9-v9-bQf">
+            <objects>
+                <viewController title="RolePopupView" id="tUe-yP-5yq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QaQ-4A-JTY"/>
+                        <viewControllerLayoutGuide type="bottom" id="gPy-7g-wMH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Df7-Mp-7eP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6E-jO-ZcZ">
+                                <rect key="frame" x="16" y="467" width="343" height="180"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUe-p5-Ozv">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XUe-p5-Ozv" secondAttribute="bottom" id="7ks-de-lfl"/>
+                                    <constraint firstItem="XUe-p5-Ozv" firstAttribute="leading" secondItem="H6E-jO-ZcZ" secondAttribute="leading" id="AC9-fF-7rT"/>
+                                    <constraint firstItem="XUe-p5-Ozv" firstAttribute="top" secondItem="H6E-jO-ZcZ" secondAttribute="top" id="QHm-lg-f8B"/>
+                                    <constraint firstAttribute="height" constant="180" id="Trj-FG-saS"/>
+                                    <constraint firstAttribute="width" constant="343" id="ht4-zV-JZa"/>
+                                    <constraint firstAttribute="trailing" secondItem="XUe-p5-Ozv" secondAttribute="trailing" id="ulT-et-J0g"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H6E-jO-ZcZ" firstAttribute="leading" secondItem="Df7-Mp-7eP" secondAttribute="leadingMargin" id="0lw-jW-R5A"/>
+                            <constraint firstItem="gPy-7g-wMH" firstAttribute="top" secondItem="H6E-jO-ZcZ" secondAttribute="bottom" constant="20" id="1xJ-ye-eT5"/>
+                            <constraint firstItem="H6E-jO-ZcZ" firstAttribute="trailing" secondItem="Df7-Mp-7eP" secondAttribute="trailingMargin" id="Vyh-Tq-EH9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdp-ym-Yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1726" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uRq-cl-VgA">
