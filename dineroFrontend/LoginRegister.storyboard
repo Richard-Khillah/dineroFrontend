@@ -13,7 +13,7 @@
         <!--LoginView-->
         <scene sceneID="RXs-BP-nPW">
             <objects>
-                <viewController title="LoginView" id="9hv-cb-ZHN" sceneMemberID="viewController">
+                <viewController title="LoginView" id="9hv-cb-ZHN" customClass="LoginViewController" customModule="dineroFrontend" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QAV-XZ-5Dx"/>
                         <viewControllerLayoutGuide type="bottom" id="DIk-vJ-Qva"/>
@@ -127,7 +127,7 @@
         <!--RegisterView-->
         <scene sceneID="iSh-j2-VsW">
             <objects>
-                <viewController title="RegisterView" id="m6Y-HJ-Oh4" sceneMemberID="viewController">
+                <viewController title="RegisterView" id="m6Y-HJ-Oh4" customClass="RegisterViewController" customModule="dineroFrontend" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SXo-w1-KWY"/>
                         <viewControllerLayoutGuide type="bottom" id="bB5-Mx-lMd"/>
@@ -245,6 +245,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="tUe-yP-5yq" kind="presentation" id="7zK-3U-Wel"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -304,7 +307,7 @@
         <!--RolePopupView-->
         <scene sceneID="SW9-v9-bQf">
             <objects>
-                <viewController title="RolePopupView" id="tUe-yP-5yq" sceneMemberID="viewController">
+                <viewController title="RolePopupView" id="tUe-yP-5yq" customClass="RolePopupViewController" customModule="dineroFrontend" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QaQ-4A-JTY"/>
                         <viewControllerLayoutGuide type="bottom" id="gPy-7g-wMH"/>

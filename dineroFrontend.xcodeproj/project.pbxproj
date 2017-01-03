@@ -16,6 +16,7 @@
 		79670A271E1C2C8700B7DC96 /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */; };
 		79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A281E1C2CD200B7DC96 /* LoginViewController.swift */; };
 		79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */; };
+		79670A2D1E1C39A700B7DC96 /* RolePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		79670A281E1C2CD200B7DC96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RolePopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */,
 				79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */,
 				79670A281E1C2CD200B7DC96 /* LoginViewController.swift */,
+				79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */,
 			);
 			name = auth;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */,
+				79670A2D1E1C39A700B7DC96 /* RolePopupViewController.swift in Sources */,
 				79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */,
 				79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */,
 				79670A131E1C291500B7DC96 /* ViewController.swift in Sources */,
@@ -321,6 +325,7 @@
 				79670A241E1C291500B7DC96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
