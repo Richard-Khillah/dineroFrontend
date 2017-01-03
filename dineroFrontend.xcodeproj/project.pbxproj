@@ -64,6 +64,7 @@
 		79670A0F1E1C291500B7DC96 /* dineroFrontend */ = {
 			isa = PBXGroup;
 			children = (
+				79670A2F1E1C3B6400B7DC96 /* extensions */,
 				79670A251E1C2C0100B7DC96 /* auth */,
 				79670A101E1C291500B7DC96 /* AppDelegate.swift */,
 				79670A121E1C291500B7DC96 /* ViewController.swift */,
@@ -85,6 +86,13 @@
 				79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */,
 			);
 			name = auth;
+			sourceTree = "<group>";
+		};
+		79670A2F1E1C3B6400B7DC96 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

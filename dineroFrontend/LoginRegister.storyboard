@@ -220,6 +220,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="m6Y-HJ-Oh4" eventType="touchUpInside" id="Ud7-3N-rFq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTh-14-T7E">
                                 <rect key="frame" x="143" y="605" width="88" height="30"/>
@@ -230,6 +233,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="m6Y-HJ-Oh4" eventType="touchUpInside" id="OEJ-CT-PbM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojp-Mt-2sX">
                                 <rect key="frame" x="16" y="429" width="343" height="30"/>
@@ -299,6 +305,14 @@
                             <constraint firstItem="Yhm-Sn-0WD" firstAttribute="leading" secondItem="piY-S3-EXm" secondAttribute="leadingMargin" id="zMw-h0-5MF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userEmailTextField" destination="b1n-ML-gsC" id="Mxa-Or-OnX"/>
+                        <outlet property="userNameTextField" destination="bF0-DQ-Nva" id="1lf-Ug-jti"/>
+                        <outlet property="userPasswordTextField" destination="Vcz-il-5zx" id="HeP-N1-eyD"/>
+                        <outlet property="userRetypePasswordTextField" destination="Njt-Pp-gd3" id="PjE-fK-Qng"/>
+                        <outlet property="userRoleTextField" destination="Y8Z-6C-PRM" id="JJ5-EU-l4V"/>
+                        <outlet property="userUsernameTextField" destination="uJb-xA-2qy" id="Ew3-8o-kKm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOs-wV-cer" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
