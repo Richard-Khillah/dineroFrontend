@@ -14,14 +14,11 @@ protocol UserSendingData {
 
 class RolePopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let userRoleOptions = ["-- Select a Role --", "Customer", "Server", "Manager", "Owner", "Admin"]
+    let userRoleOptions = ["--Select Role--", "Customer", "Server", "Manager", "Owner", "Admin"]
     
     @IBOutlet weak var userRolePicker: UIPickerView!
     
-    
     var delegate: UserSendingData? = nil
-    
-    var data = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
