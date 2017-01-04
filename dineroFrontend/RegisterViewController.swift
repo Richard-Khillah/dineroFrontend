@@ -15,13 +15,15 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var userUsernameTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRetypePasswordTextField: UITextField!
-    @IBOutlet weak var userRoleTextField: UITextField!
+    @IBOutlet weak var userRoleLabelFromPicker: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBAction func roleLabelTapped(_ sender: Any) {
+    }
     @IBAction func registerButtonTapped(_ sender: Any) {
     }
     

@@ -9,8 +9,14 @@
 import UIKit
 
 class RolePopupViewController: UIViewController {
-
+    
+    @IBOutlet weak var userRolePicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func selectButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
