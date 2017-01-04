@@ -18,36 +18,39 @@ class RegisterViewController: UIViewController, UserSendingData {
     @IBOutlet weak var userRetypePasswordTextField: UITextField!
     @IBOutlet weak var userRoleLabelFromPicker: UILabel!
     
-    var users = [String]()
+    var emails = [String]()
     var passwords = [String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "username")
-        request.returnsObjectsAsFaults = false
-        
         do {
-            
-            let results = try context.fetch(request)
-            
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    if let username = result.value(forKey: "username") as? String{
-                        users.append(username)
-                        print(users)
-                    }
-                    if let password = result.value(forKey: "password") as? String{
-                        users.append(password)
-                        print(password)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+            request.returnsObjectsAsFaults = false
+            do {
+                
+                let results = try context.fetch(request)
+                
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject] {
+                        if let email = result.value(forKey: "email") as? String{
+                            self.emails.append(email)
+                            print(self.emails)
+                        }
+                        if let password = result.value(forKey: "password") as? String{
+                           self.passwords.append(password)
+                            print(self.passwords)
+                        }
                     }
                 }
+            } catch {
+                self.alert(message: "Error occured while fetching information from database")
             }
         } catch {
-            alert(message: "Error occured while fetching information from database")
+            print("no items in core data")
         }
     }
     
@@ -80,7 +83,7 @@ class RegisterViewController: UIViewController, UserSendingData {
             newUser.setValue(userName, forKey: "name")
             newUser.setValue(userUsername, forKey: "username")
             newUser.setValue(userPassword, forKey: "password")
-            newUser.setValue(userRole, forKey: "userRole")
+            newUser.setValue(userRole, forKey: "role")
             
             do {
                 try context.save()
