@@ -86,16 +86,21 @@ class RegisterViewController: UIViewController, UserSendingData {
             newUser.setValue(userRole, forKey: "role")
             
             do {
+                
                 try context.save()
-                alert(message: "Saved")
+                
+                let myAlert = UIAlertController(title: "Alert", message: "Success", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default)
+                    { action in self.dismiss(animated: true, completion: nil) }
+                
+                myAlert.addAction(action)
+                self.present(myAlert, animated: true, completion: nil)
+                
             } catch {
-                //
+                
                 alert(message: "Error Occured while adding user to system.")
             }
-            
         }
-        
-
     }
     
     func alert(message: String) {
