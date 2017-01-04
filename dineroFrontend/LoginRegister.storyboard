@@ -78,6 +78,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="9hv-cb-ZHN" eventType="touchUpInside" id="HPQ-DZ-urI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4d-PG-7Bi">
                                 <rect key="frame" x="143" y="349" width="88" height="30"/>
@@ -122,6 +125,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="dqF-4H-vMA"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="userPasswordTextField" destination="ing-SK-F3E" id="vNA-Iw-zra"/>
+                        <outlet property="userUsernameTextField" destination="5GP-wT-aKh" id="dz4-K7-Ljv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wig-Oz-xmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

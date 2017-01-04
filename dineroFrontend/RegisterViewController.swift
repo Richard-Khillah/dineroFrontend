@@ -24,6 +24,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func roleLabelTapped(_ sender: Any) {
     }
+    
     @IBAction func registerButtonTapped(_ sender: Any) {
     }
     
