@@ -66,13 +66,13 @@
 			children = (
 				79670A2F1E1C3B6400B7DC96 /* extensions */,
 				79670A251E1C2C0100B7DC96 /* auth */,
-				79670A101E1C291500B7DC96 /* AppDelegate.swift */,
-				79670A121E1C291500B7DC96 /* ViewController.swift */,
 				79670A141E1C291500B7DC96 /* Main.storyboard */,
-				79670A1A1E1C291500B7DC96 /* Assets.xcassets */,
-				79670A1C1E1C291500B7DC96 /* LaunchScreen.storyboard */,
+				79670A121E1C291500B7DC96 /* ViewController.swift */,
 				79670A1F1E1C291500B7DC96 /* Info.plist */,
 				79670A171E1C291500B7DC96 /* dineroFrontend.xcdatamodeld */,
+				79670A1C1E1C291500B7DC96 /* LaunchScreen.storyboard */,
+				79670A1A1E1C291500B7DC96 /* Assets.xcassets */,
+				79670A101E1C291500B7DC96 /* AppDelegate.swift */,
 			);
 			path = dineroFrontend;
 			sourceTree = "<group>";
