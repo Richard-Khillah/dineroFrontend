@@ -17,6 +17,8 @@
 		79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A281E1C2CD200B7DC96 /* LoginViewController.swift */; };
 		79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */; };
 		79670A2D1E1C39A700B7DC96 /* RolePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */; };
+		799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995451F1E1D0CC300E50D7A /* AlertExtension.swift */; };
+		799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799545211E1D164700E50D7A /* getCoreDataExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		79670A281E1C2CD200B7DC96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RolePopupViewController.swift; sourceTree = "<group>"; };
+		7995451F1E1D0CC300E50D7A /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		799545211E1D164700E50D7A /* getCoreDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getCoreDataExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 		79670A2F1E1C3B6400B7DC96 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7995451F1E1D0CC300E50D7A /* AlertExtension.swift */,
+				799545211E1D164700E50D7A /* getCoreDataExtension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -173,7 +179,9 @@
 				79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */,
 				79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */,
 				79670A131E1C291500B7DC96 /* ViewController.swift in Sources */,
+				799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */,
 				79670A111E1C291500B7DC96 /* AppDelegate.swift in Sources */,
+				799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

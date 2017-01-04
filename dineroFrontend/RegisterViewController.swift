@@ -25,35 +25,12 @@ class RegisterViewController: UIViewController, UserSendingData {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
-            request.returnsObjectsAsFaults = false
-            do {
-                
-                let results = try context.fetch(request)
-                
-                if results.count > 0 {
-                    for result in results as! [NSManagedObject] {
-                        if let email = result.value(forKey: "email") as? String{
-                            self.emails.append(email)
-                            print(self.emails)
-                        }
-                        if let password = result.value(forKey: "password") as? String{
-                           self.passwords.append(password)
-                            print(self.passwords)
-                        }
-                    }
-                }
-            } catch {
-                self.alert(message: "Error occured while fetching information from database")
-            }
-        } catch {
-            print("no items in core data")
-        }
+        // retrieve emails and passwords and store locally
+        (emails, passwords) = get(CoreData: "Users", forKey1: "email", forKey2: "password")
+        
+        print(emails)
+        print(passwords)
     }
-    
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         let userEmail = userEmailTextField.text
@@ -101,16 +78,6 @@ class RegisterViewController: UIViewController, UserSendingData {
                 alert(message: "Error Occured while adding user to system.")
             }
         }
-    }
-    
-    func alert(message: String) {
-        
-        let myAlert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        
-        myAlert.addAction(action)
-        
-        self.present(myAlert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {

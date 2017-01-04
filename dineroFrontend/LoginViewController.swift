@@ -19,5 +19,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         
+        
+        
+        let userUsername = userUsernameTextField.text?.lowercased()
+        let userPassword = userPasswordTextField.text
+        
     }
 }
