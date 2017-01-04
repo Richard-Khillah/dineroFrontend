@@ -18,11 +18,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        var storedUsernames = [String]()
+        var storedPasswords = [String]()
         
-        
+        (storedUsernames, storedPasswords) = get(CoreData: "Users", forKey1: "username", forKey2: "password")
         
         let userUsername = userUsernameTextField.text?.lowercased()
         let userPassword = userPasswordTextField.text
-        
     }
 }
