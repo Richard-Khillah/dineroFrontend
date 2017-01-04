@@ -8,12 +8,43 @@
 
 import UIKit
 
-class RolePopupViewController: UIViewController {
+protocol UserSendingData {
+    func sendingDataFromUser(data: String)
+}
+
+class RolePopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let userRoleOptions = ["-- Select a Role --", "Customer", "Server", "Manager", "Owner", "Admin"]
     
     @IBOutlet weak var userRolePicker: UIPickerView!
     
+    
+    var delegate: UserSendingData? = nil
+    
+    var data = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userRolePicker.delegate = self
+        userRolePicker.dataSource = self
+        
+        print(userRoleOptions)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return userRoleOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return userRoleOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        delegate?.sendingDataFromUser(data: userRoleOptions[row])
     }
     
     @IBAction func selectButtonTapped(_ sender: Any) {

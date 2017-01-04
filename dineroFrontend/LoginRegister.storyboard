@@ -379,12 +379,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6E-jO-ZcZ">
                                 <rect key="frame" x="16" y="467" width="343" height="180"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUe-p5-Ozv">
-                                        <rect key="frame" x="85" y="52" width="172" height="120"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="Mlp-0L-hIm"/>
-                                        </constraints>
-                                    </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9E-g1-f3V">
                                         <rect key="frame" x="85" y="8" width="172" height="30"/>
                                         <constraints>
@@ -398,16 +392,20 @@
                                             <action selector="selectButtonTapped:" destination="tUe-yP-5yq" eventType="touchUpInside" id="EA8-o6-zbP"/>
                                         </connections>
                                     </button>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qjw-jM-aA7">
+                                        <rect key="frame" x="85" y="46" width="172" height="126"/>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Qjw-jM-aA7" secondAttribute="bottom" constant="8" id="9RV-Vo-Ey1"/>
                                     <constraint firstAttribute="trailing" secondItem="X9E-g1-f3V" secondAttribute="trailing" constant="86" id="GDb-0n-zhZ"/>
-                                    <constraint firstItem="XUe-p5-Ozv" firstAttribute="leading" secondItem="H6E-jO-ZcZ" secondAttribute="leading" constant="85" id="Gec-YO-FUG"/>
                                     <constraint firstItem="X9E-g1-f3V" firstAttribute="leading" secondItem="H6E-jO-ZcZ" secondAttribute="leading" constant="85" id="RJc-JR-62P"/>
-                                    <constraint firstAttribute="trailing" secondItem="XUe-p5-Ozv" secondAttribute="trailing" constant="86" id="afx-Ps-7mu"/>
-                                    <constraint firstItem="XUe-p5-Ozv" firstAttribute="top" secondItem="X9E-g1-f3V" secondAttribute="bottom" constant="14" id="k9h-bv-Go9"/>
-                                    <constraint firstAttribute="bottom" secondItem="XUe-p5-Ozv" secondAttribute="bottom" constant="8" id="pTu-6b-cnk"/>
+                                    <constraint firstItem="Qjw-jM-aA7" firstAttribute="top" secondItem="X9E-g1-f3V" secondAttribute="bottom" constant="8" id="ayc-ez-KcL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qjw-jM-aA7" secondAttribute="trailing" constant="86" id="oDz-jI-LtV"/>
                                     <constraint firstAttribute="height" constant="180" id="q5a-zW-GHl"/>
+                                    <constraint firstItem="X9E-g1-f3V" firstAttribute="top" secondItem="H6E-jO-ZcZ" secondAttribute="top" constant="8" id="qw9-In-eHM"/>
+                                    <constraint firstItem="Qjw-jM-aA7" firstAttribute="leading" secondItem="H6E-jO-ZcZ" secondAttribute="leading" constant="85" id="vjS-OA-Lzp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -419,7 +417,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="userRolePicker" destination="XUe-p5-Ozv" id="nuR-Mf-elI"/>
+                        <outlet property="userRolePicker" destination="Qjw-jM-aA7" id="VNq-Om-okT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdp-ym-Yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>

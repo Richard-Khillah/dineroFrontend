@@ -81,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				79670A261E1C2C8700B7DC96 /* LoginRegister.storyboard */,
-				79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */,
 				79670A281E1C2CD200B7DC96 /* LoginViewController.swift */,
+				79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */,
 				79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */,
 			);
 			name = auth;

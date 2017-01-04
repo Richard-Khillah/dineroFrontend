@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UserSendingData {
 
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -32,4 +32,14 @@ class RegisterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRolePopupView" {
+            let rolePopupViewController: RolePopupViewController = segue.destination as! RolePopupViewController
+            rolePopupViewController.delegate = self
+        }
+    }
+    
+    func sendingDataFromUser(data: String) {
+        userRoleLabelFromPicker.text = data
+    }
 }
