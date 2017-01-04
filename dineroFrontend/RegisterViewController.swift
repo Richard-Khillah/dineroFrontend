@@ -83,6 +83,17 @@ class RegisterViewController: UIViewController, UserSendingData {
         }
         */
         if userPassword == userRetypePassword {
+            //let url:URL = URL(string: "http://127.0.0.1:5000/auth/register")!
+            //let session = URLSession.shared
+            //var request = URLRequest(url: url)
+            //request.httpMethod = "POST"
+            //request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+
+            
+            
+            
+            
+            
             guard let registerUrl = URL(string: "http://127.0.0.1:5000/auth/register") else {
                 print ("Error in creating registerURL")
                 return
@@ -97,7 +108,7 @@ class RegisterViewController: UIViewController, UserSendingData {
             
             do {
                 
-                jsonNewUser = try JSONSerialization.data(withJSONObject: newUser, options: [])
+                jsonNewUser = try JSONSerialization.data(withJSONObject: newUser, options: .prettyPrinted)
                 registerRequest.httpBody = jsonNewUser
                 print("httpBody = ", jsonNewUser)
                 
@@ -109,7 +120,7 @@ class RegisterViewController: UIViewController, UserSendingData {
             
             
             
-            let task = URLSession.shared.dataTask(with: registerUrl) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: registerRequest as URLRequest) { (data, response, error) in
                 guard error == nil else {
                     self.alert(message: "There was an error calling post /auth/register")
                     print ("There was an error calling post /auth/register")
