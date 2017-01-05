@@ -43,46 +43,12 @@ class RegisterViewController: UIViewController, UserSendingData {
         let userRole = userRoleLabelFromPicker.text
         
         // Check for empty fields
-        if userEmail!.isEmpty || userName!.isEmpty || userUsername!.isEmpty || userPassword!.isEmpty || userRetypePassword!.isEmpty || userRole == "--Select Role--" {
+        if userEmail!.isEmpty || userName!.isEmpty || userUsername!.isEmpty || userPassword!.isEmpty || userRetypePassword!.isEmpty { // || userRole == "--Select Role--" {
             alert(message: "All fields must be filled in before registering.")
             return
         }
-        
-        // Check wether a user exists with the same username
-        
-        // Ensure passwords entered are the same and save with CoreData:
-        /*
-        if userPassword == userRetypePassword {
-            
-            // Add user to System
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let newUser = NSEntityDescription.insertNewObject(forEntityName: "Users", into: context)
-            
-            newUser.setValue(userEmail, forKey: "email")
-            newUser.setValue(userName, forKey: "name")
-            newUser.setValue(userUsername, forKey: "username")
-            newUser.setValue(userPassword, forKey: "password")
-            newUser.setValue(userRole, forKey: "role")
-            
-            do {
-                
-                try context.save()
-                
-                let myAlert = UIAlertController(title: "Alert", message: "Success", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .default)
-                    { action in self.dismiss(animated: true, completion: nil) }
-                
-                myAlert.addAction(action)
-                self.present(myAlert, animated: true, completion: nil)
-         
-            } catch {
-                
-                alert(message: "Error Occured while adding user to system.")
-            }
-        }
-        */
-        if userPassword == userRetypePassword {
+
+        //if userPassword == userRetypePassword {
             // Declare the registration form
             let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail, "restaurant_id": 1] as [String : Any]
             //let registrationForm = "name=\(userName), username=\(userUsername), password=\(userPassword), email=\(userEmail)"
@@ -125,14 +91,83 @@ class RegisterViewController: UIViewController, UserSendingData {
                     }
                     
                     do {
+                        
                         // Create json object from data
                         if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] {
                             print("just before print(json)")
                             print(json)
+                            
                             // implement handling of json
+                            if let status = json["status"] {
+                                print("status = ", status)
+                            }
                             
-                            
-                            
+                            if let message = json["message"] as? String {
+                                print("message = \(message)")
+                                
+                                if message == "Account created successfully." {
+                                    if let token = json["token"] {
+                                        
+                                        // Save the username/token combination with CoreData
+                                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                        let context = appDelegate.persistentContainer.viewContext
+                                        let newDbEmailToken = NSEntityDescription.insertNewObject(forEntityName: "DbEmailToken", into: context)
+                                        
+                                        newDbEmailToken.setValue(userEmail, forKey: "email")
+                                        newDbEmailToken.setValue(token, forKey: "token")
+                                        
+                                        do {
+                                            
+                                            try context.save()
+                                            
+                                            let myAlert = UIAlertController(title: "Alert", message: "Success", preferredStyle: .alert)
+                                            let action = UIAlertAction(title: "Ok", style: .default)
+                                            { action in self.dismiss(animated: true, completion: nil) }
+                                            
+                                            myAlert.addAction(action)
+                                            self.present(myAlert, animated: true, completion: nil)
+                                            
+                                        } catch {
+                                            
+                                            self.alert(message: "Error Occured while processing registration.")
+                                            
+                                        } // end do/catch
+                                    } // end if let token
+                                } // end if message == successfully
+                                
+                                else if message == "There is missing data" {
+                                
+                                    if let errors = json["errors"]as? [String:[String]] { //[String: AnyObject] {
+                                        
+                                        print(Mirror(reflecting: errors).subjectType)
+                                        
+                                        //parse the error fields
+                                        for (key, error) in errors {
+                                            //print("keyType =", Mirror(reflecting: key).subjectType, "errorType = ", Mirror(reflecting: error).subjectType)
+                                            print("Key = \(key) and Error = \(error[0])")
+                                            
+                                            // TODO: Handle Errors
+                                            
+                                            
+                                            
+                                        } // end for .. in errors
+                                    } // end if let errors
+                                } // end else if messages ==
+                                
+                                else if message == "That user already exists" {
+                                    
+                                    // Stay on this page and allow user to input another
+                                    let myAlert = UIAlertController(title: "Error", message: "\(message). Re-enter information.", preferredStyle: .alert)
+                                    let action = UIAlertAction(title: "Ok", style: .default)
+                                    { action in self.dismiss(animated: true, completion: nil) }
+                                    
+                                    myAlert.addAction(action)
+                                    self.present(myAlert, animated: true, completion: nil)
+
+                                    
+                                    
+                                } // end elseif message == already exists
+                            }
                         }
                     } catch let error {
                         print("catching error after task:")
@@ -147,8 +182,9 @@ class RegisterViewController: UIViewController, UserSendingData {
             }
             
            
-        alert(message: "Made it to the end of tapRegister")
-    }
+            alert(message: "Made it to the end of tapRegister")
+            //self.dismiss(animated: true, completion: nil)
+        //} end if userPassword == userRetypePassword
     
     }
     
