@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController, UserSendingData {
                 
                 myAlert.addAction(action)
                 self.present(myAlert, animated: true, completion: nil)
-                
+         
             } catch {
                 
                 alert(message: "Error Occured while adding user to system.")
@@ -83,62 +83,76 @@ class RegisterViewController: UIViewController, UserSendingData {
         }
         */
         if userPassword == userRetypePassword {
-
-            guard let registerUrl = URL(string: "http://127.0.0.1:5000/auth/register") else {
-                print ("Error in creating registerURL")
+            // Declare the registration form
+            let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail]
+            //let registrationForm = "name=\(userName), username=\(userUsername), password=\(userPassword), email=\(userEmail)"
+            
+            // Create the url to send to
+            if let url = URL(string: "http://127.0.0.1:5000/auth/register") {
+                
+                // Create a session Object
+                let session = URLSession.shared
+                
+                // Create the request and request method
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                
+                // Format the registrationForm and add it to the request body
+                do {
+                    // pass a dictionary to nsdata object
+                    request.httpBody = try JSONSerialization.data(withJSONObject: registrationForm, options: .prettyPrinted)
+                    //request.httpBody = registrationForm.data(using: String.Encoding.utf8)
+                    
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                
+                // Set header
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                // Create dataTask using the session object to send data to the server
+                let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                    data, response, error in
+                    
+                    guard error == nil else {
+                        print("Error: alert != nil")
+                        return
+                    }
+                    guard let data = data else {
+                        print("Error: Not able to let data = data")
+                        return
+                    }
+                    
+                    do {
+                        // Create json object from data
+                        if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] {
+                            print("just before print(json)")
+                            print(json)
+                            // implement handling of json
+                            
+                            
+                            
+                        }
+                    } catch let error {
+                        print("catching error after task:")
+                        print(error.localizedDescription)
+                    }
+                })
+                task.resume()
+                
+            } else {
+                alert(message: "Error creating url")
                 return
             }
             
-            var registerRequest = URLRequest(url: registerUrl)
-            registerRequest.httpMethod = "POST"
-            
-            //let newUser: [String: String] = ["name": userName!, "username": userUsername!, "email": userEmail!, "password": userPassword!]
-            let newUser: String = "name=\(userName!), password=\(userPassword!), username=\(userUsername!), email=\(userEmail))"
-            
-            //let jsonNewUser: Data
-            
-            do {
-                
-                //jsonNewUser = try JSONSerialization.data(withJSONObject: newUser, options: .prettyPrinted)
-                //registerRequest.httpBody = jsonNewUser
-                registerRequest.httpBody = newUser.data(using: .utf8)
-                //print("httpBody = ", jsonNewUser)
-                
-            } catch {
-                
-                print("Error: Cannot create json from newUser")
-            }
-            
-            let task = URLSession.shared.dataTask(with: registerRequest as URLRequest) { (data, response, error) in
-                guard error == nil else {
-                    self.alert(message: "There was an error calling post /auth/register")
-                    print ("There was an error calling post /auth/register")
-                    return
-                }
-                
-                guard let responseData = data else {
-                    
-                    self.alert(message: "Error: Did not receive data.")
-                    return
-                }
-                
-                do {
-                    // mayby guard this??
-                    let myJson = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as! [String:AnyObject]
-                    print("insde do of guard??")
-                    print(myJson)
-            
-                } catch {
-                            
-                }
-            }
-            task.resume()
-        }
+           
         alert(message: "Made it to the end of tapRegister")
     }
     
+    }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+         self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
