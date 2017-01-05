@@ -149,7 +149,6 @@ class RegisterViewController: UIViewController, UserSendingData {
                                             // TODO: Handle Errors
                                             
                                             
-                                            
                                         } // end for .. in errors
                                     } // end if let errors
                                 } // end else if messages ==
