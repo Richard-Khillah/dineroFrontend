@@ -24,8 +24,6 @@ class RolePopupViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         userRolePicker.delegate = self
         userRolePicker.dataSource = self
-        
-        print(userRoleOptions)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
