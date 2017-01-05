@@ -84,7 +84,7 @@ class RegisterViewController: UIViewController, UserSendingData {
         */
         if userPassword == userRetypePassword {
             // Declare the registration form
-            let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail]
+            let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail, "restaurant_id": 1] as [String : Any]
             //let registrationForm = "name=\(userName), username=\(userUsername), password=\(userPassword), email=\(userEmail)"
             
             // Create the url to send to
@@ -109,6 +109,7 @@ class RegisterViewController: UIViewController, UserSendingData {
                 
                 // Set header
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
                 // Create dataTask using the session object to send data to the server
                 let task = session.dataTask(with: request as URLRequest, completionHandler: {
