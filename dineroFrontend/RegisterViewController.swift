@@ -83,17 +83,7 @@ class RegisterViewController: UIViewController, UserSendingData {
         }
         */
         if userPassword == userRetypePassword {
-            //let url:URL = URL(string: "http://127.0.0.1:5000/auth/register")!
-            //let session = URLSession.shared
-            //var request = URLRequest(url: url)
-            //request.httpMethod = "POST"
-            //request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
 
-            
-            
-            
-            
-            
             guard let registerUrl = URL(string: "http://127.0.0.1:5000/auth/register") else {
                 print ("Error in creating registerURL")
                 return
@@ -102,23 +92,22 @@ class RegisterViewController: UIViewController, UserSendingData {
             var registerRequest = URLRequest(url: registerUrl)
             registerRequest.httpMethod = "POST"
             
-            let newUser: [String: String] = ["name": userName!, "username": userUsername!, "email": userEmail!, "password": userPassword!]
-            //let newUser: String = "name=\(userName!), password=\(userPassword!), username=\(userUsername!), email=\(userEmail))"
-            let jsonNewUser: Data
+            //let newUser: [String: String] = ["name": userName!, "username": userUsername!, "email": userEmail!, "password": userPassword!]
+            let newUser: String = "name=\(userName!), password=\(userPassword!), username=\(userUsername!), email=\(userEmail))"
+            
+            //let jsonNewUser: Data
             
             do {
                 
-                jsonNewUser = try JSONSerialization.data(withJSONObject: newUser, options: .prettyPrinted)
-                registerRequest.httpBody = jsonNewUser
-                print("httpBody = ", jsonNewUser)
+                //jsonNewUser = try JSONSerialization.data(withJSONObject: newUser, options: .prettyPrinted)
+                //registerRequest.httpBody = jsonNewUser
+                registerRequest.httpBody = newUser.data(using: .utf8)
+                //print("httpBody = ", jsonNewUser)
                 
             } catch {
                 
                 print("Error: Cannot create json from newUser")
             }
-            
-            
-            
             
             let task = URLSession.shared.dataTask(with: registerRequest as URLRequest) { (data, response, error) in
                 guard error == nil else {
@@ -135,16 +124,17 @@ class RegisterViewController: UIViewController, UserSendingData {
                 
                 do {
                     // mayby guard this??
-                    let myJson = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as AnyObject
+                    let myJson = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as! [String:AnyObject]
                     print("insde do of guard??")
                     print(myJson)
-                
+            
                 } catch {
                             
                 }
             }
             task.resume()
         }
+        alert(message: "Made it to the end of tapRegister")
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
