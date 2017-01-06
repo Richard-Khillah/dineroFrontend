@@ -18,18 +18,18 @@ class RegisterViewController: UIViewController, UserSendingData {
     @IBOutlet weak var userRetypePasswordTextField: UITextField!
     @IBOutlet weak var userRoleLabelFromPicker: UILabel!
     
-    var emails = [String]()
-    var passwords = [String]()
+    
+    var storedEmails = [String]()
+    var storedTokens = [String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // retrieve emails and passwords and store locally
-        (emails, passwords) = get(CoreData: "Users", forKey1: "email", forKey2: "password")
-        
-        print(emails)
-        print(passwords)
+        (storedEmails, storedTokens) = get(CoreDataDbEmailToken: "DbEmailToken", forKeyEmail: "email", forKeyToken: "token")
+        print(storedEmails)
+        print(storedTokens)
     }
     
     
@@ -51,10 +51,10 @@ class RegisterViewController: UIViewController, UserSendingData {
         //if userPassword == userRetypePassword {
             // Declare the registration form
             let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail, "restaurant_id": 1] as [String : Any]
-            //let registrationForm = "name=\(userName), username=\(userUsername), password=\(userPassword), email=\(userEmail)"
             
             // Create the url to send to
-            if let url = URL(string: "http://127.0.0.1:5000/auth/register") {
+            //if let url = URL(string: "http://127.0.0.1:5000/auth/register")
+            if let url = AuthURL.registerURL {
                 
                 // Create a session Object
                 let session = URLSession.shared
@@ -67,7 +67,6 @@ class RegisterViewController: UIViewController, UserSendingData {
                 do {
                     // pass a dictionary to nsdata object
                     request.httpBody = try JSONSerialization.data(withJSONObject: registrationForm, options: .prettyPrinted)
-                    //request.httpBody = registrationForm.data(using: String.Encoding.utf8)
                     
                 } catch let error {
                     print(error.localizedDescription)
@@ -117,7 +116,6 @@ class RegisterViewController: UIViewController, UserSendingData {
                                         newDbEmailToken.setValue(token, forKey: "token")
                                         
                                         do {
-                                            
                                             try context.save()
                                             
                                             let myAlert = UIAlertController(title: "Alert", message: "Success", preferredStyle: .alert)
@@ -163,8 +161,6 @@ class RegisterViewController: UIViewController, UserSendingData {
                                     myAlert.addAction(action)
                                     self.present(myAlert, animated: true, completion: nil)
 
-                                    
-                                    
                                 } // end elseif message == already exists
                             }
                         }
