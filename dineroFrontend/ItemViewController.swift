@@ -21,26 +21,54 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func fetchItems() {
-        let urlRequest = URLRequest(url: URL(string: "http://localhost:5000/item/")!)
+        
+        // Generate session authorization information to gather information
+        // from the server.
+        let userToken = UserDefaults.standard.string(forKey: "userToken")
+        let bearerToken = "Bearer " + userToken!
+        
+        
+        var urlRequest = URLRequest(url: URL(string: "http://localhost:5000/item/")!)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue(bearerToken, forHTTPHeaderField: "Authorization")
+        
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            // make sure there was no error in iniating request
-            if error != nil {
-                print(error)
+            
+            guard error == nil else {
+                print("START error::ItemViewController.swift:")
+                print(error!.localizedDescription)
+                print("END error::ItemViewContoller.swift")
+                return
+            }
+            guard let data = data else {
+                print("Error::ItemViewController.swift:line 42: `guard let data = data` failed.")
                 return
             }
             
-            // initialize items array
-            self.items = [Item]()
-        
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject]
                 
-                if let itemsFromJson = json["items"] as? [[String:AnyObject]] {
-                    for itemFromJson in itemsFromJson {
+                // Create json object from data
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                
+                print(":ItemViewController.Swift::fetchItems(): `line 55:")
+                print(json)
+                
+                // imlement handling of json
+                if let status = json["status"] {
+                    print(":ItemViewController.Swift::fetchItems(): `line 60`")
+                }
+                
+                if let itemsFromJson = json["data"] as? [String:Any] {
+                    print("itemsFromJson = \(itemsFromJson)")
+                    for itemFromJson in (itemsFromJson as? [String: Any]) {
                         let item = Item()
                         
-                        if let name = itemFromJson[""] as? String, let description = itemFromJson["description"] as? String, let category = itemFromJson["category"] as? String, let cost = itemFromJson["cost"] as? Float, let id = itemFromJson["id"] as? Int {
+                        if let name = itemFromJson["name"] as? String, let description = itemFromJson["description"] as? String, let category = itemFromJson["category"] as? String, let cost = itemFromJson["cost"] as? Float, let id = itemFromJson["id"] as? Int {
+                            
+                            // initialize items array
+                            self.items = [Item]()
                             
                             item.name = name
                             item.desc = description
@@ -63,7 +91,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         task.resume()
     }
     
-    
+    @IBAction func reloadButtonTapped(_ sender: Any) {
+        fetchItems()
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,5 +112,13 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If there are no items, return 0
         return items?.count ?? 0
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        if logout() {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            alert(message: "Error loggin out")
+        }
     }
 }

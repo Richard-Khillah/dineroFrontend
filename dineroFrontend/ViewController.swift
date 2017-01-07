@@ -13,7 +13,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        performSegue(withIdentifier: "toLoginRegisterStoryboard", sender: self)
+        print("inside viewDidLoad()")
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        print(isUserLoggedIn)
+        
+        let userRole = UserDefaults.standard.string(forKey: "userRole")
+        print(userRole!)
+        
+        if isUserLoggedIn {
+            if userRole! == "admin" {
+                performSegue(withIdentifier: "toServerStoryboard", sender: self)
+            }
+        } else {
+            
+            performSegue(withIdentifier: "toLoginRegisterStoryboard", sender: self)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
     }
 }
 

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoginDelegate {
+    
+}
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userEmailTextField: UITextField!
@@ -80,19 +84,25 @@ class LoginViewController: UIViewController {
                             
                             // implement handling of json
                             if let message = json["message"] as? String {
-                                print(message)
-                                
                                 if message == "successfully logged in." {
                                     if let data = json["data"] as? [String:Any] {
-                                        
-                                        if let returnedToken = data["token"] as? String {
-                                            if token == returnedToken {
-                                                print("Tokens Match and user is now logged in")
+                                        if let user = data["user"] as? [String: Any] {
+                                            if let role = user["role"] as? String {
+                                                
+                                                print("role = \(role)")
+                                                // Store role and loggedInStatus
+                                                UserDefaults.standard.set(token, forKey: "userToken")
+                                                UserDefaults.standard.set(role, forKey: "userRole")
+                                                UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                                                
+                                                UserDefaults.standard.synchronize()
+                                                
+                                                print("Logged in")
+                                                self.dismiss(animated: true, completion: nil)
                                             }
                                         }
                                     }
                                 }
-                                
                             }
                         }
                     } catch let error {

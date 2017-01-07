@@ -49,6 +49,7 @@ class RegisterViewController: UIViewController, UserSendingData {
         }
 
         //if userPassword == userRetypePassword {
+        
             // Declare the registration form
             let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail, "restaurant_id": 1] as [String : Any]
             
@@ -57,13 +58,14 @@ class RegisterViewController: UIViewController, UserSendingData {
             if let url = AuthURL.registerURL {
                 
                 // Create a session Object
+                // Create the request and request method and headers
+                // Format the registrationForm and add it to the request body
                 let session = URLSession.shared
-                
-                // Create the request and request method
                 var request = URLRequest(url: url)
                 request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
-                // Format the registrationForm and add it to the request body
                 do {
                     // pass a dictionary to nsdata object
                     request.httpBody = try JSONSerialization.data(withJSONObject: registrationForm, options: .prettyPrinted)
@@ -72,20 +74,18 @@ class RegisterViewController: UIViewController, UserSendingData {
                     print(error.localizedDescription)
                 }
                 
-                // Set header
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
                 // Create dataTask using the session object to send data to the server
                 let task = session.dataTask(with: request as URLRequest, completionHandler: {
                     data, response, error in
                     
                     guard error == nil else {
-                        print("Error: alert != nil")
+                        print("START error::RegisterViewContoller.swift:")
+                        print(error!.localizedDescription)
+                        print("END error::RegisterViewContoller.swift:")
                         return
                     }
                     guard let data = data else {
-                        print("Error: Not able to let data = data")
+                        print("Error::RegisterViewContoller.swift:line 90: `guard let data = data` failed.")
                         return
                     }
                     
@@ -93,7 +93,7 @@ class RegisterViewController: UIViewController, UserSendingData {
                         
                         // Create json object from data
                         if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] {
-                            print("just before print(json)")
+                            print(":RegisterViewController.Swift::registerButtonTapped(): `print(json):")
                             print(json)
                             
                             // implement handling of json

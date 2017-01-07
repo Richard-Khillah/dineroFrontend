@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wxM-sK-CTu" id="bXj-qV-6wH">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-v9-WNx">
@@ -68,7 +68,18 @@
                             <outlet property="delegate" destination="Xkh-nK-GPD" id="sZC-2z-kwb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZsZ-iJ-qe0"/>
+                    <navigationItem key="navigationItem" id="ZsZ-iJ-qe0">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="AV0-TD-PM3">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Xkh-nK-GPD" id="c48-Bk-Vx5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Dfl-4R-g9h">
+                            <connections>
+                                <action selector="reloadButtonTapped:" destination="Xkh-nK-GPD" id="7ey-yB-QLN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OKd-eb-QKQ" id="b0Q-cE-fqc"/>
                     </connections>
@@ -80,6 +91,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Y5m-Gi-cuc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTS-pS-UBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sY4-L8-EQQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dwS-hL-CxJ">
@@ -91,9 +103,8 @@
                         <segue destination="Xkh-nK-GPD" kind="relationship" relationship="rootViewController" id="Nca-eo-iSq"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KTS-pS-UBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-292" y="134"/>
+            <point key="canvasLocation" x="-540" y="154"/>
         </scene>
     </scenes>
 </document>

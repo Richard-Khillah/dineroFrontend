@@ -25,6 +25,7 @@
                     <navigationItem key="navigationItem" title="Protected Page" id="7KT-Ky-DjO"/>
                     <connections>
                         <segue destination="pct-qR-BBa" kind="presentation" identifier="toLoginRegisterStoryboard" id="XY3-rK-cLG"/>
+                        <segue destination="QGR-Cc-uaJ" kind="presentation" identifier="toServerStoryboard" id="MuF-uo-QL2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -38,6 +39,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nep-Qz-ZW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1617" y="-147"/>
+        </scene>
+        <!--Server-->
+        <scene sceneID="VG0-YH-Hms">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Server" id="QGR-Cc-uaJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZq-D2-9Xa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="273"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z12-lh-xYC">
