@@ -28,67 +28,83 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         let bearerToken = "Bearer " + userToken!
         
         
-        var urlRequest = URLRequest(url: URL(string: "http://localhost:5000/item/")!)
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.addValue(bearerToken, forHTTPHeaderField: "Authorization")
-        
-        
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        if let url = AuthURL.getItemURL {
+            // Create Session Object
+            let session = URLSession.shared
             
-            guard error == nil else {
-                print("START error::ItemViewController.swift:")
-                print(error!.localizedDescription)
-                print("END error::ItemViewContoller.swift")
-                return
-            }
-            guard let data = data else {
-                print("Error::ItemViewController.swift:line 42: `guard let data = data` failed.")
-                return
-            }
+            // Create request, method and header fields
+            var urlRequest = URLRequest(url: URL(string: "http://localhost:5000/item/")!)
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            urlRequest.addValue(bearerToken, forHTTPHeaderField: "Authorization")
             
-            do {
+            // Create data task to fetch items
+            let task = session.dataTask(with: urlRequest, completionHandler: {
+                (data, response, error) in
                 
-                // Create json object from data
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
-                
-                print(":ItemViewController.Swift::fetchItems(): `line 55:")
-                print(json)
-                
-                // imlement handling of json
-                if let status = json["status"] {
-                    print(":ItemViewController.Swift::fetchItems(): `line 60`")
+                guard error == nil else {
+                    print("error line 47")
+                    return
                 }
                 
-                if let itemsFromJson = json["data"] as? [String:Any] {
-                    print("itemsFromJson = \(itemsFromJson)")
-                    for itemFromJson in (itemsFromJson as? [String: Any]) {
-                        let item = Item()
+                guard let data = data else {
+                    print("Error with data = data")
+                    return
+                }
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                        print("line 58 print(json) = ")
+                        print(json)
+                        print("jsonType = \(Mirror(reflecting: json).subjectType)")
                         
-                        if let name = itemFromJson["name"] as? String, let description = itemFromJson["description"] as? String, let category = itemFromJson["category"] as? String, let cost = itemFromJson["cost"] as? Float, let id = itemFromJson["id"] as? Int {
+                        if let status = json["status"] as? String {
                             
-                            // initialize items array
-                            self.items = [Item]()
-                            
-                            item.name = name
-                            item.desc = description
-                            item.category = category
-                            item.cost = cost
-                            item.id = id
+                            if status == "success" {
+                                
+                                if let data = json["data"] as? [[String:Any]]{
+                                    //print("line 62 data = \(data)")
+                                    print("dataType =", Mirror(reflecting: data).subjectType)
+                                    
+                                    // initialize items array
+                                    self.items = [Item]()
+                                    
+                                    for item in data {
+                                        if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
+                                            
+                                            // Create an Item
+                                            print("creating item now")
+                                            var item = Item()
+                                            
+                                            item.name = name
+                                            item.desc = description
+                                            item.category = category
+                                            item.cost = cost
+                                            item.id = id
+                                            
+                                            self.items?.append(item)
+                                        }
+                                    }
+                                }
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
-                        self.items?.append(item)
+                        
                     }
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    
+                } catch let error {
+                    print("Error in catch of first do/catch in task.")
+                    print(error)
+                    return
                 }
                 
-            } catch let error {
-                print(error)
-                return
-            }
+                
+            })
+            task.resume()
+            
         }
-        task.resume()
     }
     
     @IBAction func reloadButtonTapped(_ sender: Any) {
@@ -99,9 +115,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
         
-        cell.nameLabel.text = self.items?[indexPath.item].name
-        cell.costLabel.text = self.items?[indexPath.item].name
-        
+        if let item = (self.items?[indexPath.item])! as? Item {
+         
+            cell.nameLabel.text = item.name
+            cell.costLabel.text = String(describing: item.cost!)
+        }
         return cell
     }
     
@@ -111,6 +129,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If there are no items, return 0
+        print(items?.count)
         return items?.count ?? 0
     }
     

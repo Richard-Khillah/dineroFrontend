@@ -25,6 +25,7 @@
 		796B96C51E1DFAF900A8BF86 /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796B96C41E1DFAF900A8BF86 /* Customer.storyboard */; };
 		799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995451F1E1D0CC300E50D7A /* AlertExtension.swift */; };
 		799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799545211E1D164700E50D7A /* getCoreDataExtension.swift */; };
+		79A2B8441E20789F00FC1B89 /* ErrorViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2B8431E20789F00FC1B89 /* ErrorViewControllerExtension.swift */; };
 		79B42F171E2031B500CA4713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B42F161E2031B500CA4713 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		796B96C41E1DFAF900A8BF86 /* Customer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
 		7995451F1E1D0CC300E50D7A /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		799545211E1D164700E50D7A /* getCoreDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getCoreDataExtension.swift; sourceTree = "<group>"; };
+		79A2B8431E20789F00FC1B89 /* ErrorViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewControllerExtension.swift; sourceTree = "<group>"; };
 		79B42F161E2031B500CA4713 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				7965104F1E20491300565A41 /* AuthViewControllerExtensions.swift */,
 				7995451F1E1D0CC300E50D7A /* AlertExtension.swift */,
 				799545211E1D164700E50D7A /* getCoreDataExtension.swift */,
+				79A2B8431E20789F00FC1B89 /* ErrorViewControllerExtension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */,
 				79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */,
 				79670A131E1C291500B7DC96 /* ViewController.swift in Sources */,
+				79A2B8441E20789F00FC1B89 /* ErrorViewControllerExtension.swift in Sources */,
 				799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */,
 				79670A111E1C291500B7DC96 /* AppDelegate.swift in Sources */,
 				799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */,
