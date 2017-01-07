@@ -13,7 +13,7 @@ struct AuthURL {
     
     static let loginURL: URL? = URL(string: "http://127.0.0.1:5000/auth/login")
     
-    static let GET_ItemURL: URL? = URL(string: "http://localhost:5000/item/")
+    static let getItemURL: URL? = URL(string: "http://localhost:5000/item/")
     
     
 }
