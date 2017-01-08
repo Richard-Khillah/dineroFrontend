@@ -56,15 +56,12 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                         print("line 58 print(json) = ")
                         print(json)
-                        print("jsonType = \(Mirror(reflecting: json).subjectType)")
                         
                         if let status = json["status"] as? String {
                             
                             if status == "success" {
                                 
                                 if let data = json["data"] as? [[String:Any]]{
-                                    //print("line 62 data = \(data)")
-                                    print("dataType =", Mirror(reflecting: data).subjectType)
                                     
                                     // initialize items array
                                     self.items = [Item]()
@@ -73,8 +70,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                                         if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
                                             
                                             // Create an Item
-                                            print("creating item now")
-                                            var item = Item()
+                                            let item = Item()
                                             
                                             item.name = name
                                             item.desc = description
@@ -91,19 +87,14 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 }
                             }
                         }
-                        
                     }
-                    
                 } catch let error {
                     print("Error in catch of first do/catch in task.")
                     print(error)
                     return
                 }
-                
-                
             })
             task.resume()
-            
         }
     }
     
@@ -129,7 +120,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If there are no items, return 0
-        print(items?.count)
         return items?.count ?? 0
     }
     
