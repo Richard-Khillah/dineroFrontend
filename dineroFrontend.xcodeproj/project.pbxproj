@@ -22,10 +22,14 @@
 		79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A281E1C2CD200B7DC96 /* LoginViewController.swift */; };
 		79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */; };
 		79670A2D1E1C39A700B7DC96 /* RolePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */; };
-		796B96C51E1DFAF900A8BF86 /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796B96C41E1DFAF900A8BF86 /* Customer.storyboard */; };
+		7992CBBA1E22C57600162D74 /* AllBillsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992CBB91E22C57600162D74 /* AllBillsTVC.swift */; };
+		7992CBBC1E22C59400162D74 /* AllBillsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992CBBB1E22C59400162D74 /* AllBillsCell.swift */; };
+		7992CBBE1E22C5A500162D74 /* SingleBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992CBBD1E22C5A500162D74 /* SingleBillCell.swift */; };
+		7992CBC01E22C5BC00162D74 /* SingleBillTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992CBBF1E22C5BC00162D74 /* SingleBillTVC.swift */; };
 		799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995451F1E1D0CC300E50D7A /* AlertExtension.swift */; };
 		799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799545211E1D164700E50D7A /* getCoreDataExtension.swift */; };
 		79A2B8441E20789F00FC1B89 /* ErrorViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2B8431E20789F00FC1B89 /* ErrorViewControllerExtension.swift */; };
+		79A2B84C1E221B9500FC1B89 /* Bill.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79A2B84B1E221B9500FC1B89 /* Bill.storyboard */; };
 		79B42F171E2031B500CA4713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B42F161E2031B500CA4713 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +51,14 @@
 		79670A281E1C2CD200B7DC96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		79670A2A1E1C2CF800B7DC96 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		79670A2C1E1C39A700B7DC96 /* RolePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RolePopupViewController.swift; sourceTree = "<group>"; };
-		796B96C41E1DFAF900A8BF86 /* Customer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
+		7992CBB91E22C57600162D74 /* AllBillsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllBillsTVC.swift; sourceTree = "<group>"; };
+		7992CBBB1E22C59400162D74 /* AllBillsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllBillsCell.swift; sourceTree = "<group>"; };
+		7992CBBD1E22C5A500162D74 /* SingleBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleBillCell.swift; sourceTree = "<group>"; };
+		7992CBBF1E22C5BC00162D74 /* SingleBillTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleBillTVC.swift; sourceTree = "<group>"; };
 		7995451F1E1D0CC300E50D7A /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		799545211E1D164700E50D7A /* getCoreDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getCoreDataExtension.swift; sourceTree = "<group>"; };
 		79A2B8431E20789F00FC1B89 /* ErrorViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewControllerExtension.swift; sourceTree = "<group>"; };
+		79A2B84B1E221B9500FC1B89 /* Bill.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Bill.storyboard; sourceTree = "<group>"; };
 		79B42F161E2031B500CA4713 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,13 +102,13 @@
 		79670A0F1E1C291500B7DC96 /* dineroFrontend */ = {
 			isa = PBXGroup;
 			children = (
-				796B96C31E1DFADA00A8BF86 /* server */,
-				796B96C21E1DFACC00A8BF86 /* customer */,
+				79A2B8481E221AA100FC1B89 /* bill */,
 				79670A2F1E1C3B6400B7DC96 /* extensions */,
 				79670A251E1C2C0100B7DC96 /* auth */,
 				7925F5161E1F3D9D00E2CBD4 /* item */,
 				79670A141E1C291500B7DC96 /* Main.storyboard */,
 				7925F5191E1FF8C500E2CBD4 /* Server.storyboard */,
+				79A2B84B1E221B9500FC1B89 /* Bill.storyboard */,
 				79670A121E1C291500B7DC96 /* ViewController.swift */,
 				79B42F161E2031B500CA4713 /* Constants.swift */,
 				79670A101E1C291500B7DC96 /* AppDelegate.swift */,
@@ -134,19 +142,15 @@
 			name = extensions;
 			sourceTree = "<group>";
 		};
-		796B96C21E1DFACC00A8BF86 /* customer */ = {
+		79A2B8481E221AA100FC1B89 /* bill */ = {
 			isa = PBXGroup;
 			children = (
-				796B96C41E1DFAF900A8BF86 /* Customer.storyboard */,
+				7992CBB91E22C57600162D74 /* AllBillsTVC.swift */,
+				7992CBBB1E22C59400162D74 /* AllBillsCell.swift */,
+				7992CBBF1E22C5BC00162D74 /* SingleBillTVC.swift */,
+				7992CBBD1E22C5A500162D74 /* SingleBillCell.swift */,
 			);
-			name = customer;
-			sourceTree = "<group>";
-		};
-		796B96C31E1DFADA00A8BF86 /* server */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = server;
+			name = bill;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,12 +212,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796B96C51E1DFAF900A8BF86 /* Customer.storyboard in Resources */,
 				79670A1E1E1C291500B7DC96 /* LaunchScreen.storyboard in Resources */,
 				79670A271E1C2C8700B7DC96 /* LoginRegister.storyboard in Resources */,
 				79670A1B1E1C291500B7DC96 /* Assets.xcassets in Resources */,
 				79670A161E1C291500B7DC96 /* Main.storyboard in Resources */,
 				7925F5171E1FF8C500E2CBD4 /* Server.storyboard in Resources */,
+				79A2B84C1E221B9500FC1B89 /* Bill.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,17 +228,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7992CBC01E22C5BC00162D74 /* SingleBillTVC.swift in Sources */,
 				7925F5151E1F3D7400E2CBD4 /* ItemViewController.swift in Sources */,
 				79670A291E1C2CD200B7DC96 /* LoginViewController.swift in Sources */,
+				7992CBBA1E22C57600162D74 /* AllBillsTVC.swift in Sources */,
 				7925F5111E1F37B600E2CBD4 /* Item.swift in Sources */,
 				7925F5131E1F3D2200E2CBD4 /* ItemCell.swift in Sources */,
 				796510501E20491300565A41 /* AuthViewControllerExtensions.swift in Sources */,
+				7992CBBE1E22C5A500162D74 /* SingleBillCell.swift in Sources */,
 				79670A2D1E1C39A700B7DC96 /* RolePopupViewController.swift in Sources */,
 				79670A2B1E1C2CF800B7DC96 /* RegisterViewController.swift in Sources */,
 				79670A191E1C291500B7DC96 /* dineroFrontend.xcdatamodeld in Sources */,
 				79670A131E1C291500B7DC96 /* ViewController.swift in Sources */,
 				79A2B8441E20789F00FC1B89 /* ErrorViewControllerExtension.swift in Sources */,
 				799545221E1D164700E50D7A /* getCoreDataExtension.swift in Sources */,
+				7992CBBC1E22C59400162D74 /* AllBillsCell.swift in Sources */,
 				79670A111E1C291500B7DC96 /* AppDelegate.swift in Sources */,
 				799545201E1D0CC300E50D7A /* AlertExtension.swift in Sources */,
 				79B42F171E2031B500CA4713 /* Constants.swift in Sources */,
