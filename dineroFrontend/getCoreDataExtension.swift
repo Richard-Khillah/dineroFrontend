@@ -43,10 +43,7 @@ extension UIViewController
             } catch {
                 self.alert(message: "Error occured while fetching information from database")
             }
-        } catch {
-            print("no items in core data")
-        }
-        
+        }        
         return (keyEmails, keyTokens)
     }
     

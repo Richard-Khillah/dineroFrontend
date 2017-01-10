@@ -21,13 +21,16 @@ class ViewController: UIViewController {
         print(userRole!)
         
         if isUserLoggedIn {
-            if userRole! == "admin" {
+            if userRole! == "owner" {
                 performSegue(withIdentifier: "toServerStoryboard", sender: self)
             }
         } else {
             
             performSegue(withIdentifier: "toLoginRegisterStoryboard", sender: self)
         }
+    }
+    
+    func unwindToProtected(segue: UIStoryboardSegue) {
     }
     
     override func viewDidAppear(_ animated: Bool) {

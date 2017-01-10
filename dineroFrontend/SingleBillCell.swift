@@ -9,6 +9,8 @@
 import UIKit
 
 class SingleBillCell: UITableViewCell {
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

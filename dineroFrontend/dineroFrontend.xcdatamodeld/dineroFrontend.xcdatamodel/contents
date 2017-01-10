@@ -12,7 +12,7 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Users" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="DbEmailToken" positionX="-36" positionY="45" width="128" height="75"/>
+        <element name="Users" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

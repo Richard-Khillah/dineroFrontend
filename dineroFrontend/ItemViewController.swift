@@ -33,7 +33,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             let session = URLSession.shared
             
             // Create request, method and header fields
-            var urlRequest = URLRequest(url: URL(string: "http://localhost:5000/item/")!)
+            var urlRequest = URLRequest(url: url)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
             urlRequest.addValue(bearerToken, forHTTPHeaderField: "Authorization")
@@ -54,14 +54,14 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        print("line 58 print(json) = ")
-                        print(json)
+                        //print("line 58 print(json) = ")
+                        //print(json)
                         
                         if let status = json["status"] as? String {
                             
                             if status == "success" {
                                 
-                                if let data = json["data"] as? [[String:Any]]{
+                                if let data = json["data"] as? [[String:Any]] {
                                     
                                     // initialize items array
                                     self.items = [Item]()
@@ -82,6 +82,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                                         }
                                     }
                                 }
+                                
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
                                 }
@@ -102,10 +103,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchItems()
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
         
+        // set up the cell with Customer name and bill total
         if let item = (self.items?[indexPath.item])! as? Item {
          
             cell.nameLabel.text = item.name

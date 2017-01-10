@@ -48,7 +48,7 @@ class RegisterViewController: UIViewController, UserSendingData {
             return
         }
 
-        //if userPassword == userRetypePassword {
+        if userPassword == userRetypePassword {
         
             // Declare the registration form
             let registrationForm = ["name": userName, "username": userUsername, "password": userPassword, "email": userEmail, "restaurant_id": 1] as [String : Any]
@@ -179,7 +179,7 @@ class RegisterViewController: UIViewController, UserSendingData {
            
             alert(message: "Made it to the end of tapRegister")
             //self.dismiss(animated: true, completion: nil)
-        //} end if userPassword == userRetypePassword
+        } //end if userPassword == userRetypePassword
     
     }
     

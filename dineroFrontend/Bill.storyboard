@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7cX-qG-ILS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--All Bills Table View Controller-->
+        <!--All BillsTVC-->
         <scene sceneID="LJt-3C-mfr">
             <objects>
-                <viewController id="X9o-Sh-IOI" customClass="AllBillsTableViewController" customModule="dineroFrontend" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="X9o-Sh-IOI" customClass="AllBillsTVC" customModule="dineroFrontend" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SEy-J2-1rw"/>
                         <viewControllerLayoutGuide type="bottom" id="DvB-9h-Fux"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="639"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZVn-Js-81d" customClass="AllBillsCell" customModule="dineroFrontend" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AllBillsCell" id="ZVn-Js-81d" customClass="AllBillsCell" customModule="dineroFrontend" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZVn-Js-81d" id="iIH-b2-fYx">
@@ -62,10 +62,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="billTotalLabel" destination="wdJ-62-Cy8" id="0FV-HI-yZL"/>
+                                            <outlet property="customerNameLabel" destination="P3y-EX-yvY" id="b4V-La-Q3C"/>
                                             <segue destination="sMU-rY-rem" kind="push" id="o4I-Oe-hke"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="X9o-Sh-IOI" id="eZ2-nf-G1p"/>
+                                    <outlet property="delegate" destination="X9o-Sh-IOI" id="XzZ-jO-UdD"/>
+                                </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-Rk-BGP">
                                 <rect key="frame" x="0.0" y="639" width="375" height="29"/>
@@ -90,8 +96,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xip-Il-Lul">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lDp-0k-sQ5"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Dff-z2-khT">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="X9o-Sh-IOI" id="VpW-Jd-X2f"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lDp-0k-sQ5">
+                            <connections>
+                                <action selector="addBillButtonTapped:" destination="X9o-Sh-IOI" id="MLt-fO-Kz1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="dA2-64-lyF" id="gpM-Xp-QGZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvv-U2-ZXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,15 +210,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fzD-YE-6o2" customClass="SingleBillCell" customModule="dineroFrontend" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SingleBillCell" id="fzD-YE-6o2" customClass="SingleBillCell" customModule="dineroFrontend" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fzD-YE-6o2" id="F2E-fG-ELm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sMU-rY-rem" id="5Zq-ZX-xkh"/>
+                                    <outlet property="delegate" destination="sMU-rY-rem" id="aZn-cC-5PP"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dk-0D-P4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248.8000000000002" y="247.82608695652175"/>
+            <point key="canvasLocation" x="2145" y="248"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e1h-mq-DYq">
@@ -258,7 +280,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gba-Jy-b1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442.39999999999998" y="247.82608695652175"/>
+            <point key="canvasLocation" x="622" y="248"/>
         </scene>
     </scenes>
 </document>

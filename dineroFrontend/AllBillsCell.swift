@@ -9,7 +9,11 @@
 import UIKit
 
 class AllBillsCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var customerNameLabel: UILabel!
+    @IBOutlet weak var billTotalLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

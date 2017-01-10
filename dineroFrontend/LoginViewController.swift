@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         
         (storedEmails, storedTokens) = get(CoreDataDbEmailToken: "DbEmailToken", forKeyEmail: "email", forKeyToken: "token")
         
-        print("emails = \(storedEmails); tokens = \(storedTokens)")
+        //print("emails = \(storedEmails); tokens = \(storedTokens)")
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
         
         // Retrieve the token from CoreData entity DbEmailToken
         if let emailIndex = storedEmails.index(of: userEmail!) {
+            
             let token = storedTokens[emailIndex]
             
             // use the key to log the user in.
