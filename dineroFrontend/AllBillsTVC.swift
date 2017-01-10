@@ -107,55 +107,46 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                         //print("All Bills json = ")
                         //print(json)
                         
-                        if let status = json["status"] as? String {
+                        if let status = json["status"] as? String, status == "success", let data = json["data"] as? [String: Any], let bills = data["bills"] as? [[String: Any]] {
                             print("status = \(status)")
-                            
-                            if status == "success" {
-                                
-                                if let data = json["data"] as? [String: Any] {
-                                    //print("data = \(data)")
-                                    
-                                    if let bills = data["bills"] as? [[String: Any]] {
-                                        //print("bills as? [[String: Any]] = \(bills)")
+                            //print("data = \(data)")
+                            //print("bills as? [[String: Any]] = \(bills)")
  
-                                        for bill in bills {
-                                            print("bill = \(bill)")
-                                            //print(Mirror(reflecting: bill).subjectType)
-                                            
-                                            if let billId = bill["id"] as? Int, let receiptNumber = bill["receipt_number"] as? String, let paid = bill["paid"] as? Bool, let customer = bill["customer"] as? [String: Any], let name = customer["name"] as? String {
-                                                
-                                                //let name = customer["name"] as? String
-                                                let bill = Bill()
+                            for bill in bills {
+                                print("bill = \(bill)")
+                                //print(Mirror(reflecting: bill).subjectType)
+                                
+                                if let billId = bill["id"] as? Int, let receiptNumber = bill["receipt_number"] as? String, let paid = bill["paid"] as? Bool, let customer = bill["customer"] as? [String: Any], let name = customer["name"] as? String {
+                                    
+                                    //let name = customer["name"] as? String
+                                    let bill = Bill()
 
-                                                // TODO: - create fetch items function. perhaps as an extension/global function
-                                                // TODO: - Determine whether paid receipt goes to user from Frontend or stripe
-                                                // TODO: - fetch bill items
-                                                bill.billId = billId
-                                                bill.receiptNumber = receiptNumber
-                                                bill.customerName = name
-                                                bill.paid = paid
-                                                
-                                                self.fetchBillItems(bill: bill)
-                                                
-                                                self.bills?.append(bill)
-                                                
-                                                for bill in self.bills! {
-                                                    print("name = \(bill.customerName)")
-                                                    print("receiptNumber = \(bill.receiptNumber)")
-                                                    print("billId = \(bill.billId)")
-                                                    print("paid = \(bill.paid)")
-                                                    //for item in bill.billItems {
-                                                      //  print("item name = \(item.name)")
-                                                        //print("item cost = \(item.cost)")
-                                                    //}
-                                                }
-                                                
-
-                                                print("end current bills?.append(bill)")
-                                                
-                                            }
-                                        }
+                                    // TODO: - create fetch items function. perhaps as an extension/global function
+                                    // TODO: - Determine whether paid receipt goes to user from Frontend or stripe
+                                    // TODO: - fetch bill items
+                                    bill.billId = billId
+                                    bill.receiptNumber = receiptNumber
+                                    bill.customerName = name
+                                    bill.paid = paid
+                                    
+                                    self.fetchBillItems(bill: bill)
+                                    
+                                    self.bills?.append(bill)
+                                    
+                                    for bill in self.bills! {
+                                        print("name = \(bill.customerName)")
+                                        print("receiptNumber = \(bill.receiptNumber)")
+                                        print("billId = \(bill.billId)")
+                                        print("paid = \(bill.paid)")
+                                        //for item in bill.billItems {
+                                          //  print("item name = \(item.name)")
+                                            //print("item cost = \(item.cost)")
+                                        //}
                                     }
+                                    
+
+                                    print("end current bills?.append(bill)")
+                                    
                                 }
                             }
                             
@@ -213,11 +204,11 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                         //print("line 58 print(json) = ")
                         //print(json)
                         
-                        if let status = json["status"] as? String {
+                        if let status = json["status"] as? String { // remove 1 start
                             
-                            if status == "success" {
+                            if status == "success" { // remove 2 start
                                 
-                                if let items = json["items"] as? [[String:Any]] {
+                                if let items = json["items"] as? [[String:Any]] { // remove 3 start
                                     
                                     // initialize items array
                                     //var billItems = [Item]()
@@ -246,9 +237,9 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                                             //billItems.append(item)
                                         }
                                     }
-                                }
-                            }
-                        }
+                                } // remove 3 end
+                            } // remove 2 end
+                        } // remove 1 end
                     }
                 } catch let error {
                     print("Error in catch of first do/catch in task.")
