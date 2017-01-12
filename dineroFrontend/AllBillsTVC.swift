@@ -168,6 +168,7 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
 
     
     func fetchBillItems(bill: Bill?) {
+        print("Entering fetch BillItems")
         
         // Generate session authorization information to gather information
         // from the server.
@@ -207,13 +208,14 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                         if let status = json["status"] as? String { // remove 1 start
                             
                             if status == "success" { // remove 2 start
+                                print("fetchBillItems, status == success")
                                 
                                 if let items = json["items"] as? [[String:Any]] { // remove 3 start
+                                    print("items = \(items)")
                                     
                                     // initialize items array
                                     //var billItems = [Item]()
                                     
-                                    print("inside fetchBillItems:")
                                     for item in items {
                                         if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
                                             
@@ -249,6 +251,7 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
             })
             task.resume()
         }
+        print("exiting fetchBillItems")
     }
     
     
