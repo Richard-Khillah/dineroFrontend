@@ -201,47 +201,35 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                 }
                 
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        //print("line 58 print(json) = ")
-                        //print(json)
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any],
+                    let status = json["status"] as? String, status == "success", let items = json["data"] as? [[String: Any]] {
+                        print(json)
+                        print("fetchBillItems, status == success")
+                        print("items = \(items)")
                         
-                        if let status = json["status"] as? String { // remove 1 start
-                            
-                            if status == "success" { // remove 2 start
-                                print("fetchBillItems, status == success")
+                        // initialize items array
+                        //var billItems = [Item]()
+                        var billTotal: Float? = 0
+                        
+                        for item in items {
+                            if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
                                 
-                                if let items = json["items"] as? [[String:Any]] { // remove 3 start
-                                    print("items = \(items)")
-                                    
-                                    // initialize items array
-                                    //var billItems = [Item]()
-                                    
-                                    for item in items {
-                                        if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
-                                            
-                                            // Create an Item
-                                            let item = Item()
-                                            
-                                            item.name = name
-                                            item.desc = description
-                                            item.category = category
-                                            item.cost = cost
-                                            item.id = id
-                                            
-                                            print("start item")
-                                            print("item name = \(name)")
-                                            print("item.name = \(item.name)")
-                                            print("end current Item")
-                                            
-                                            //self.bills?[indexPath!].billItems?.append(item)
-                                            bill?.billItems?.append(item)
-                                            print("apended item to bill")
-                                            //billItems.append(item)
-                                        }
-                                    }
-                                } // remove 3 end
-                            } // remove 2 end
-                        } // remove 1 end
+                                // Create an Item
+                                let item = Item()
+                                
+                                item.name = name
+                                item.desc = description
+                                item.category = category
+                                item.cost = cost
+                                item.id = id
+                                
+                                billTotal? += cost
+
+                                bill?.billItems?.append(item)
+                                print("apended item to bill")
+                            }
+                        }
+                        bill?.billTotal? = billTotal!
                     }
                 } catch let error {
                     print("Error in catch of first do/catch in task.")
