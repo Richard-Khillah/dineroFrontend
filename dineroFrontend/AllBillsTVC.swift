@@ -175,8 +175,8 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
         let userToken = UserDefaults.standard.string(forKey: "userToken")
         let bearerToken = "Bearer " + userToken!
         
-        
-        if let url = AuthURL.getItemURL {
+        // Set GET url
+        if let url = AuthURL.getBillItemsURL {
             // Create Session Object
             let session = URLSession.shared
             
@@ -202,16 +202,22 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any],
-                    let status = json["status"] as? String, status == "success", let items = json["data"] as? [[String: Any]] {
+                    let status = json["status"] as? String, status == "success" /*, let items = json["items"] as? [[String: Any]] */{
                         print(json)
                         print("fetchBillItems, status == success")
-                        print("items = \(items)")
+                        
+                        //TODO: figure data type and parse.
+                        print(Mirror(reflecting: json["items"]).subjectType)
+                        
+                        
+                        //print("items = \(items)")
                         
                         // initialize items array
                         //var billItems = [Item]()
-                        var billTotal: Float? = 0
+                        //var billTotal: Float? = 0
                         
-                        for item in items {
+                        
+                        /*for item in items {
                             if let name = item["name"] as? String, let description = item["description"] as? String, let category = item["category"] as? String, let cost = item["cost"] as? Float, let id = item["id"] as? Int {
                                 
                                 // Create an Item
@@ -226,10 +232,11 @@ class AllBillsTVC: UIViewController , UITableViewDelegate, UITableViewDataSource
                                 billTotal? += cost
 
                                 bill?.billItems?.append(item)
-                                print("apended item to bill")
+                                print("\(name) apended to bill")
                             }
-                        }
-                        bill?.billTotal? = billTotal!
+                        } */
+                        //bill?.billTotal? = billTotal!
+                        //print("bill?.billTotal? = \(billTotal!)")
                     }
                 } catch let error {
                     print("Error in catch of first do/catch in task.")
